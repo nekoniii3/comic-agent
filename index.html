@@ -61,16 +61,22 @@
             border-color: #000 transparent;
         }
     </style>
-
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=AW-18233116462">
-    </script>
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
+        // 広告結果確認用
+        function applyLog() {
+            try {
+              const queryString = window.location.search;
+              const urlParams = new URLSearchParams(queryString);
 
-      gtag('config', 'AW-18233116462');
+              if (urlParams.size === 0) return
+
+              const response = fetch("https://ca-access-log-830931444384.asia-northeast1.run.app?" + urlParams);
+              const result = response.json();
+              console.log(result);
+            } catch (error) {
+              console.error(error.message);
+            }   
+        }
     </script>
 </head>
 <body class="bg-slate-50 text-slate-900 overflow-x-hidden max-md:text-center">
@@ -236,7 +242,7 @@
               type="button"
               id="apply"
               class="md:w-1/6 bg-orange-500 hover:bg-red-600 text-white font-bold p-4 rounded-xl shadow-lg transition duration-200"
-              onclick="location.href='https://monitor-apply.vercel.app'; twq('event', 'tw-okyme-pg6bl', {})"
+              onclick="location.href='https://monitor-apply.vercel.app'; applyLog()"
             >
               モニターご応募はこちら
             </button>
@@ -274,14 +280,5 @@
           <p class="text-slate-500 text-sm mb-6"><a href="https://jp.freepik.com/free-vector/comic-colorful-frame-background_18094018.htm#fromView=search&page=3&position=41&uuid=b7bdc492-dd56-47e6-80ac-14a0738d2e99&query=%E6%BC%AB%E7%94%BB%E3%80%80%E8%83%8C%E6%99%AF">背景画像　著作者：pikisuperstar／出典：Freepik</a></p>
         </div>
     </footer>
-
-    <!-- X conversion tracking base code -->
-    <script>
-    !function(e,t,n,s,u,a){e.twq||(s=e.twq=function(){s.exe?s.exe.apply(s,arguments):s.queue.push(arguments);
-    },s.version='1.1',s.queue=[],u=t.createElement(n),u.async=!0,u.src='https://static.ads-twitter.com/uwt.js',
-    a=t.getElementsByTagName(n)[0],a.parentNode.insertBefore(u,a))}(window,document,'script');
-    twq('config','okyme');
-    </script>
-    <!-- End X conversion tracking base code -->
 </body>
 </html>
